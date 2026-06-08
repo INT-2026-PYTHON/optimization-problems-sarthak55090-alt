@@ -87,3 +87,30 @@ O(1) time, giving an overall O(n) algorithm.
 =================================================
 
 """
+def two_sum_brute(nums, target):
+    
+    for i in range(len(nums)):
+      for j in range(i + 1,len(nums)):
+            if nums[i] + nums[j] == target and i < j:
+              return (i,j)
+
+def two_sum_fast(nums, target):
+    freq = {}
+
+    for i in range(len(nums)):
+        x = nums[i]
+        complement = target - x
+
+        if complement in freq:
+            return (freq[complement], i)
+
+        freq[x] = i
+
+size = int(input("Enter Size of list: "))
+nums = []
+for i in range(size):
+    num = int(input("Enter value: "))
+    nums.append(num)
+Element = int(input("Enter the target: "))
+print(f'Brute Force: {count_pairs_brute(nums,Element)}')
+print(f'Optimized: {count_pairs_fast(nums,Element)}')

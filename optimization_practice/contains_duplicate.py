@@ -63,3 +63,29 @@ Optimized:   False  # O(n)
 =================================================
 
 """
+def has_duplicate_brute(nums):
+    
+    for i in range(len(nums)):
+        for j in range(i+1,len(nums)):
+            if nums[j] == nums[i] :
+                return True
+    
+    return False
+
+def has_duplicate_fast(nums):
+    
+    seen = set()
+    
+    for num in nums:
+        if num in seen:
+            return True
+        seen.add(num)
+    return False
+
+size = int(input("Enter Size of list: "))
+nums = []
+for i in range(size):
+    num = int(input("Enter value: "))
+    nums.append(num)
+print(f'Brute Force: {has_duplicate_brute(nums)}')
+print(f'Optimized: {has_duplicate_fast(nums)}')
